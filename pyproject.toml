@@ -24,36 +24,3 @@ bindings = "pyo3"
 # Add runtime requirements that may be declared on the built wheel
 requires-dist = ["numpy>=1.22"]
 
-[tool.uv.workspace]
-members = [
-    "ok",
-    ".",
-    ".",
-    ".",
-    ".",
-    ".",
-    ".",
-    ".",
-    ".",
-    ".",
-    ".",
-    ".",
-    ".",
-    ".",
-    ".",
-    ".",
-    ".",
-    ".",
-    ".",
-    ".",
-    ".",
-    ".",
-    ".",
-    ".",
-    ".",
-    ".",
-    ".",
-    ".",
-    ".",
-    ".",
-]
