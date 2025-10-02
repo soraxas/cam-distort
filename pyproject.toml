@@ -1,0 +1,25 @@
+[build-system]
+requires = ["maturin>=1.2,<2"]
+build-backend = "maturin"
+
+[project]
+name = "cam_distort"
+version = "0.1.0"
+description = "Python extension for camera distortion"
+readme = "README.md"
+requires-python = ">=3.8"
+license = { text = "MIT" }
+authors = [ { name = "Tin Lai (@soraxas)" } ]
+keywords = ["camera", "distortion", "rust", "pyo3", "numpy"]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Rust",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+
+
+[tool.maturin]
+bindings = "pyo3"
+# Add runtime requirements that may be declared on the built wheel
+requires-dist = ["numpy>=1.22"]
