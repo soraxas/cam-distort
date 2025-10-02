@@ -140,7 +140,8 @@ jobs:
       fail-fast: false
       matrix:
         os: [ubuntu, macos, windows]
-        target: [x86_64, aarch64]
+        target: [x86_64]
+        # target: [x86_64, aarch64]
         manylinux: [auto]
         include:
           - os: ubuntu
@@ -154,19 +155,19 @@ jobs:
             pypy: true
           - os: windows
             ls: dir
-          - os: windows
-            ls: dir
-            target: i686
-            python-architecture: x86
-            interpreter: 3.9 3.10 3.11 3.12 3.13
+          # - os: windows
+          #   ls: dir
+          #   target: i686
+          #   python-architecture: x86
+          #   interpreter: 3.9 3.10 3.11 3.12 3.13
           - os: windows
             ls: dir
             target: x86_64
             interpreter: 3.9 3.10 3.11 3.12 3.13
-          - os: windows
-            ls: dir
-            target: aarch64
-            interpreter: 3.11 3.12 3.13
+          # - os: windows
+          #   ls: dir
+          #   target: aarch64
+          #   interpreter: 3.11 3.12 3.13
           - os: ubuntu
             platform: linux
             target: i686
