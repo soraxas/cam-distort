@@ -6,7 +6,13 @@ edition = "2024"
 [lib]
 crate-type = ["cdylib"]
 
+[features]
+default = ["py"]
+py = ["dep:numpy", "dep:pyo3"]
+
 [dependencies]
-pyo3 = { version = "0.26.0", features = ["extension-module"] }
-numpy = "0.26"
 rayon = "1.11.0"
+bytemuck = "1.23.2"
+thiserror = "2.0.17"
+pyo3 = { version = "0.26.0", features = ["extension-module"], optional = true}
+numpy = {version  = "0.26", optional = true}
