@@ -76,7 +76,7 @@ fn check_is_2d_pts_array(pts: &PyReadwriteArray2<f32>) -> Result<(), PyErr> {
 /// params : DistortionParams
 ///     Distortion parameters.
 #[pyfunction(signature = (pts, params))]
-fn apply_distortion<'py>(
+fn apply_distortion(
     mut pts: PyReadwriteArray2<f32>,
     params: PyDistortionParams,
 ) -> PyResult<()> {
@@ -106,7 +106,7 @@ fn apply_distortion<'py>(
 /// tol : float, optional
 ///     Tolerance for convergence.
 #[pyfunction(signature = (pts, params, max_iter = 60, tol = 1e-6, verbose = false))]
-fn undistort_iterative<'py>(
+fn undistort_iterative(
     mut pts: PyReadwriteArray2<f32>,
     params: PyDistortionParams,
     max_iter: usize,

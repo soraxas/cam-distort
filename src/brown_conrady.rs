@@ -3,6 +3,7 @@ use rayon::prelude::*;
 #[cfg(feature = "py")]
 use numpy::ndarray::{Array1, Array2, ArrayView2};
 
+use crate::DistortionParamsTrait;
 #[derive(Debug, Clone)]
 pub struct BrownConradyParams {
     pub k1: f32,
@@ -19,6 +20,31 @@ pub struct BrownConradyParams {
     pub s4: f32,
     pub cx: f32,
     pub cy: f32,
+}
+
+impl DistortionParamsTrait for BrownConradyParams {
+    const NUM_PARAMS: usize = 14;
+}
+
+impl BrownConradyParams {
+    pub fn from_slice(slice: &[f32; Self::NUM_PARAMS]) -> Self {
+        Self {
+            k1: slice[0],
+            k2: slice[1],
+            k3: slice[2],
+            k4: slice[3],
+            k5: slice[4],
+            k6: slice[5],
+            p1: slice[6],
+            p2: slice[7],
+            s1: slice[8],
+            s2: slice[9],
+            s3: slice[10],
+            s4: slice[11],
+            cx: slice[12],
+            cy: slice[13],
+        }
+    }
 }
 
 #[cfg(feature = "py")]
@@ -122,7 +148,7 @@ pub fn apply_distortion_parallel(pts: &mut [[f32; 2]], params: &BrownConradyPara
 /// numpy.ndarray
 ///     Undistorted points, shape (N, 2).
 /// Rust helper: undistort points using iterative Newton; input is 2D view, returns new Array2
-fn undistort_iterative_np_broadcast(
+pub fn undistort_iterative_np_broadcast(
     pts: ArrayView2<'_, f32>,
     params: &BrownConradyParams,
     max_iter: usize,
