@@ -16,7 +16,7 @@ checksum = "3995eaeebcdf32f91f980d360f78732ddc061097ab4e39991ae7a6ace9194677"
 
 [[package]]
 name = "cam-distort"
-version = "0.1.0"
+version = "0.2.0"
 dependencies = [
  "bytemuck",
  "numpy",

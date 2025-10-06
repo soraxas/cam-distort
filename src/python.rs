@@ -131,7 +131,31 @@ fn apply_undistortion(
     Ok(())
 }
 
-/// The Python module
+/// Python bindings for camera distortion and undistortion using Rust back-end.
+///
+/// This module provides high-performance distortion and undistortion routines for
+/// 2D point arrays using the Brown-Conrady distortion model. The functions operate
+/// directly on NumPy arrays and support broadcasting over batches of 2D points.
+///
+/// Classes
+/// -------
+/// DistortionParams
+///     Represents camera distortion parameters. Currently supports Brown-Conrady model
+///     with 14 parameters.
+///
+/// Functions
+/// ---------
+/// apply_distortion(pts: np.ndarray, params: DistortionParams)
+///     Applies distortion to an array of 2D points in-place.
+///
+/// apply_undistortion(pts: np.ndarray, params: DistortionParams, max_iter=60, tol=1e-6, verbose=False)
+///     Removes distortion from an array of 2D points using iterative optimization.
+///
+/// Notes
+/// -----
+/// - Input point arrays must be NumPy arrays of shape (N, 2) and C-contiguous.
+/// - All operations are performed in-place for performance.
+/// - This module is powered by a fast, parallelized Rust backend.
 #[pymodule]
 fn cam_distort<'py>(_py: Python<'py>, m: &Bound<'py, PyModule>) -> PyResult<()> {
     m.add_class::<PyDistortionParams>()?;
