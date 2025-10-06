@@ -20,7 +20,7 @@ classifiers = [
 
 
 [tool.maturin]
+python-source = "python"
 bindings = "pyo3"
 # Add runtime requirements that may be declared on the built wheel
 requires-dist = ["numpy>=1.22"]
-

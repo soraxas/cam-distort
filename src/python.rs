@@ -106,7 +106,7 @@ fn apply_distortion(
 /// tol : float, optional
 ///     Tolerance for convergence.
 #[pyfunction(signature = (pts, params, max_iter = 60, tol = 1e-6, verbose = false))]
-fn undistort_iterative(
+fn apply_undistortion(
     mut pts: PyReadwriteArray2<f32>,
     params: PyDistortionParams,
     max_iter: usize,
@@ -138,7 +138,7 @@ fn cam_distort<'py>(_py: Python<'py>, m: &Bound<'py, PyModule>) -> PyResult<()> 
 
     // register top-level wrappers
     m.add_function(wrap_pyfunction!(apply_distortion, m)?)?;
-    m.add_function(wrap_pyfunction!(undistort_iterative, m)?)?;
+    m.add_function(wrap_pyfunction!(apply_undistortion, m)?)?;
 
     Ok(())
 }
