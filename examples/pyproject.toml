@@ -1,0 +1,16 @@
+[project]
+name = "cam-distort-example"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.8"
+dependencies = [
+    "cam-distort",
+    "numpy>=1.24.4",
+    "opencv-python>=4.11.0.86",
+    "pillow>=10.4.0",
+    "soraxas-toolbox",
+]
+
+[tool.uv.sources]
+cam-distort = { path = "../", editable = true }
